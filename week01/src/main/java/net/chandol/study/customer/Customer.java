@@ -1,12 +1,16 @@
 package net.chandol.study.customer;
 
-public class Customer {
+import net.chandol.study.common.EntryPoint;
+import net.chandol.study.common.Registrar;
+
+public class Customer extends EntryPoint {
     private String customerNumber;
     private String name;
     private String address;
     private long mileage;
 
     public Customer(String customerNumber, String name, String address) {
+        super(customerNumber);
         this.customerNumber = customerNumber;
         this.name = name;
         this.address = address;
@@ -31,5 +35,13 @@ public class Customer {
 
     public long getMileage() {
         return mileage;
+    }
+
+    public static Customer find(String customerName) {
+        return (Customer) Registrar.get(Customer.class, customerName);
+    }
+
+    public Customer persist() {
+        return (Customer)super.persist();
     }
 }

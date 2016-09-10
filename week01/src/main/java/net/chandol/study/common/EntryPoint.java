@@ -1,6 +1,6 @@
 package net.chandol.study.common;
 
-public class EntryPoint {
+public abstract class EntryPoint {
     private final String identity;
 
     public EntryPoint(String identity) {
