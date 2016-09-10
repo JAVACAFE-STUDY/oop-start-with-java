@@ -10,6 +10,20 @@ import static org.junit.Assert.assertThat;
 
 public class CustomerTest {
 
+    public void setUp() {
+        Registrar.init();
+    }
+
+    @Test
+    public void testCustomerIdentical() {
+        CustomerRepository customerRepository = new CustomerRepository();
+        Customer customer = new Customer("CUST-01", "홍길동", "경기도 안양시");
+        customerRepository.save(customer);
+        Customer anotherCustomer = customerRepository.find("CUST-01");
+
+        assertThat(customer, is(anotherCustomer));
+    }
+
     @Test
     public void testAliasing() {
         Customer customer = new Customer("CUST-01", "홍길동", "경기도 안양시");
@@ -24,14 +38,4 @@ public class CustomerTest {
         assertNotEquals(0, anotherCustomer.getMileage());
     }
 
-    public void setUp() {
-        Registrar.init();
-    }
-
-    @Test
-    public void testCustomerIdentical() {
-        Customer customer = new Customer("CUST-01", "홍길동", "경기도 안양시").persist();
-        Customer anotherCustomer = Customer.find("CUST-01");
-        assertThat(customer, is(anotherCustomer));
-    }
 }

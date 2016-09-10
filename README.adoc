@@ -1,3 +1,7 @@
 = 자바로 시작하는 객체지향 프로그래밍
 
 자바카페 2016 하반기스터디 공유자료
+
+== 참고자료
+
+* http://aeternum.egloos.com/category/Domain-Driven%20Design

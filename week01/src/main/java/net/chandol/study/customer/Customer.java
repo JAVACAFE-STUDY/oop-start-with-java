@@ -40,8 +40,4 @@ public class Customer extends EntryPoint {
     public static Customer find(String customerName) {
         return (Customer) Registrar.get(Customer.class, customerName);
     }
-
-    public Customer persist() {
-        return (Customer)super.persist();
-    }
 }

@@ -11,8 +11,4 @@ public abstract class EntryPoint {
         return identity;
     }
 
-    public EntryPoint persist() {
-        Registrar.add(this.getClass(), this);
-        return this;
-    }
 }
