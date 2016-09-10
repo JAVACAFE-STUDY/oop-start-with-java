@@ -28,6 +28,7 @@ public class CustomerTest {
         Registrar.init();
     }
 
+    @Test
     public void testCustomerIdentical() {
         Customer customer = new Customer("CUST-01", "홍길동", "경기도 안양시").persist();
         Customer anotherCustomer = Customer.find("CUST-01");
