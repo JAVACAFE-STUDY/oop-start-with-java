@@ -1,12 +1,16 @@
 package net.chandol.study.oop.customer;
 
-public class Customer {
+import net.chandol.study.oop.common.EntryPoint;
+import net.chandol.study.oop.common.Registrar;
+
+public class Customer extends EntryPoint {
     private String username;
     private String password;
     private String email;
     private Address address;
 
     public Customer(String username, String password, String email, Address address) {
+        super(username);
         this.username = username;
         this.password = password;
         this.email = email;
@@ -27,5 +31,15 @@ public class Customer {
 
     public Address getAddress() {
         return address;
+    }
+
+
+    public Customer persist() {
+        Registrar.add(this, Customer.class);
+        return this;
+    }
+
+    public static Customer find(String identity){
+        return Registrar.get(identity, Customer.class);
     }
 }
