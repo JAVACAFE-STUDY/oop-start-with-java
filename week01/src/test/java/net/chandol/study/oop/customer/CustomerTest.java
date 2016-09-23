@@ -29,10 +29,13 @@ public class CustomerTest {
 
     @Test
     public void customerRegistrarTest(){
-        Address fixtureAddress = new Address("경기도", "성남시");
-        Customer customer = (new Customer("test", "password", "test@test.com", fixtureAddress)).persist();
+        CustomerRepository repository = new CustomerRepository();
 
-        Customer anotherCustomer = Customer.find("test");
+        Address fixtureAddress = new Address("경기도", "성남시");
+        Customer customer = new Customer("test", "password", "test@test.com", fixtureAddress);
+
+        repository.persist(customer);
+        Customer anotherCustomer = repository.get("test");
 
         Set<Customer> all = Registrar.getAll(Customer.class);
         System.out.println(all);

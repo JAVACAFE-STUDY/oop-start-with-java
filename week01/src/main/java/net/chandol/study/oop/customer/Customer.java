@@ -1,7 +1,6 @@
 package net.chandol.study.oop.customer;
 
 import net.chandol.study.oop.common.EntryPoint;
-import net.chandol.study.oop.common.Registrar;
 
 public class Customer extends EntryPoint {
     private String username;
@@ -31,15 +30,5 @@ public class Customer extends EntryPoint {
 
     public Address getAddress() {
         return address;
-    }
-
-
-    public Customer persist() {
-        Registrar.add(this, Customer.class);
-        return this;
-    }
-
-    public static Customer find(String identity){
-        return Registrar.get(identity, Customer.class);
     }
 }
