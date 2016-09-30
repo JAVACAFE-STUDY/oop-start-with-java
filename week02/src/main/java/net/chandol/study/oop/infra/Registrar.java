@@ -1,4 +1,4 @@
-package net.chandol.study.oop.common;
+package net.chandol.study.oop.infra;
 
 import java.util.*;
 
@@ -15,7 +15,7 @@ public class Registrar {
         if (!entryPoints.containsKey(type))
             entryPoints.put(type, new HashMap<>());
 
-        entryPoints.get(type).put(newObject.getIdentity(), newObject);
+        entryPoints.get(type).put(newObject.getId(), newObject);
     }
 
     public static <T extends EntryPoint> T get(String identity, Class<T> type) {

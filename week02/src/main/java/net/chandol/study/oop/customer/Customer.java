@@ -1,6 +1,6 @@
 package net.chandol.study.oop.customer;
 
-import net.chandol.study.oop.common.EntryPoint;
+import net.chandol.study.oop.infra.EntryPoint;
 
 public class Customer extends EntryPoint {
     private String username;
