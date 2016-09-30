@@ -1,8 +1,12 @@
 package net.chandol.study.oop.customer;
 
+import net.chandol.study.oop.infra.Registrar;
 import org.junit.Test;
 
+import java.util.Set;
+
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.sameInstance;
 import static org.junit.Assert.assertThat;
 
 public class CustomerTest {
@@ -25,7 +29,17 @@ public class CustomerTest {
 
     @Test
     public void customerRegistrarTest(){
-        
+        Address fixtureAddress = new Address("경기도", "성남시");
+        Customer customer = new Customer("test", "password", "test@test.com", fixtureAddress);
+
+        CustomerRepository.persist(customer);
+        Customer anotherCustomer = CustomerRepository.get("test");
+
+        Set<Customer> all = Registrar.getAll(Customer.class);
+        System.out.println(all);
+
+        assertThat(customer, sameInstance(anotherCustomer));
     }
+
 
 }
