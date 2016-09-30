@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.chandol.study.oop</groupId>
-    <artifactId>oop-week01</artifactId>
+    <artifactId>oop-week02</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
