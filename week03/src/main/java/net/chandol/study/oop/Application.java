@@ -19,7 +19,7 @@ public class Application implements CommandLineRunner{
     }
 
     @Override
-    public void run(String... strings) throws Exception {
+    public void run(String... strings) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
@@ -29,9 +29,10 @@ public class Application implements CommandLineRunner{
         em.persist(new Product("신라면", 700));
         em.persist(new Product("신라면", 700));
 
-        Query query = em.createQuery("SELECT A FROM Product A");
-        List<Product> resultList = query.getResultList();
+        Product product = em.find(Product.class, 1L);
+        System.out.println(product);
 
+        List resultList = em.createQuery("SELECT A FROM Product A").getResultList();
         System.out.println(resultList);
 
         tx.commit();
