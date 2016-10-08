@@ -1,6 +1,6 @@
-package net.chandol.study.oop.task.repsoitory;
+package net.chandol.study.oop.taskmanager.repsoitory;
 
-import net.chandol.study.oop.task.model.Task;
+import net.chandol.study.oop.taskmanager.model.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,9 +1,9 @@
-package net.chandol.study.oop.task.service;
+package net.chandol.study.oop.taskmanager.service;
 
-import net.chandol.study.oop.task.dto.ProjectCreateRequest;
-import net.chandol.study.oop.task.model.Project;
-import net.chandol.study.oop.task.model.Status;
-import net.chandol.study.oop.task.repsoitory.StatusRepository;
+import net.chandol.study.oop.taskmanager.dto.ProjectCreateRequest;
+import net.chandol.study.oop.taskmanager.model.Project;
+import net.chandol.study.oop.taskmanager.model.Status;
+import net.chandol.study.oop.taskmanager.repsoitory.StatusRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

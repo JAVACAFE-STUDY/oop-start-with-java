@@ -1,4 +1,4 @@
-package net.chandol.study.oop.task.model;
+package net.chandol.study.oop.taskmanager.model;
 
 import lombok.Getter;
 

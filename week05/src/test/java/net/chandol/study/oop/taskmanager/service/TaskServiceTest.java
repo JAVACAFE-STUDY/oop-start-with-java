@@ -1,10 +1,10 @@
-package net.chandol.study.oop.task.service;
+package net.chandol.study.oop.taskmanager.service;
 
-import net.chandol.study.oop.task.dto.ProjectCreateRequest;
-import net.chandol.study.oop.task.dto.TaskCreateRequest;
-import net.chandol.study.oop.task.model.Project;
-import net.chandol.study.oop.task.model.Status;
-import net.chandol.study.oop.task.model.Task;
+import net.chandol.study.oop.taskmanager.dto.ProjectCreateRequest;
+import net.chandol.study.oop.taskmanager.dto.TaskCreateRequest;
+import net.chandol.study.oop.taskmanager.model.Project;
+import net.chandol.study.oop.taskmanager.model.Status;
+import net.chandol.study.oop.taskmanager.model.Task;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,7 +25,7 @@ public class TaskServiceTest {
     @Autowired
     TaskService taskService;
 
-    Project fixtureProject;
+    private Project fixtureProject;
 
     @Before
     public void setup(){

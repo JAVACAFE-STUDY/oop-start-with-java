@@ -1,9 +1,9 @@
-package net.chandol.study.oop.task.service;
+package net.chandol.study.oop.taskmanager.service;
 
-import net.chandol.study.oop.task.dto.ProjectCreateRequest;
-import net.chandol.study.oop.task.dto.StatusCreateRequest;
-import net.chandol.study.oop.task.model.Project;
-import net.chandol.study.oop.task.model.Status;
+import net.chandol.study.oop.taskmanager.dto.ProjectCreateRequest;
+import net.chandol.study.oop.taskmanager.dto.StatusCreateRequest;
+import net.chandol.study.oop.taskmanager.model.Project;
+import net.chandol.study.oop.taskmanager.model.Status;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,11 +26,10 @@ public class StatusServiceTest {
     @Autowired
     ProjectService projectService;
 
-
     private Project fixtureProject;
 
     @Before
-    public void setup(){
+    public void setup() {
         // TODO project생성은 fixture 생성 클래스로 위임할 것.
         this.fixtureProject = projectService.createWithDefaultStatus(new ProjectCreateRequest("프로젝트"));
     }
@@ -53,7 +52,7 @@ public class StatusServiceTest {
 
     @Test
     @Transactional
-    public void 활성화상태_반환_테스트(){
+    public void 활성화상태_반환_테스트() {
         //given
         // 기본생성된 활성상태가 3개 존재함.
         Project project = fixtureProject;

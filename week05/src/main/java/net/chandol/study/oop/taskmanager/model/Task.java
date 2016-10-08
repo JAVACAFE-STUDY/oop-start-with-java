@@ -1,5 +1,6 @@
-package net.chandol.study.oop.task.model;
+package net.chandol.study.oop.taskmanager.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ public class Task {
     @GeneratedValue
     private Long id;
     @ManyToOne
+    @JsonIgnore
     private Status status;
     private String name;
     private String description;
