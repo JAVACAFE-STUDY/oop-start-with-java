@@ -1,0 +1,24 @@
+= 초간단 일감관리 프로그램
+
+== 개요
+
+****
+트렐로 만들어보기
+
+UI는?? 알아서...
+****
+
+== 요구사항
+
+PROJECT기능::
+* PROJECT동록
+* PROJECT조회
+STATUS기능::
+* STATUS추가하기
+* STATUS수정하기
+* STATUS보관하기
+TASK기능::
+* TASK추가하기
+* TASK수정하기
+* TASK보관하기
+* TASK삭제하기
