@@ -1,6 +1,6 @@
 package net.chandol.study.oop.customer;
 
-import net.chandol.study.oop.common.Registrar;
+import net.chandol.study.oop.infra.Registrar;
 import org.junit.Test;
 
 import java.util.Set;
@@ -29,18 +29,21 @@ public class CustomerTest {
 
     @Test
     public void customerRegistrarTest(){
-        CustomerRepository repository = new CustomerRepository();
+        //given
+        Address address = new Address("경기도", "성남시");
+        Customer customer = new Customer("test", "password", "test@test.com", address);
 
-        Address fixtureAddress = new Address("경기도", "성남시");
-        Customer customer = new Customer("test", "password", "test@test.com", fixtureAddress);
+        //when
+        CustomerRepository.persist(customer);
 
-        repository.persist(customer);
-        Customer anotherCustomer = repository.get("test");
+        //then
+        Customer anotherCustomer = CustomerRepository.get("test");
+        assertThat(customer, sameInstance(anotherCustomer));
+
 
         Set<Customer> all = Registrar.getAll(Customer.class);
         System.out.println(all);
-
-        assertThat(customer, sameInstance(anotherCustomer));
     }
+
 
 }
