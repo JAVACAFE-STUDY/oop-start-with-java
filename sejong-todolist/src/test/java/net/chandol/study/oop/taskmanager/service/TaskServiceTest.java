@@ -18,12 +18,9 @@ import static net.chandol.study.oop._testutil.SejongAssert.objectAssertThat;
 @SpringBootTest
 public class TaskServiceTest {
 
-    @Autowired
-    ProjectService projectService;
-    @Autowired
-    StatusService statusService;
-    @Autowired
-    TaskService taskService;
+    @Autowired ProjectService projectService;
+    @Autowired StatusService statusService;
+    @Autowired TaskService taskService;
 
     private Project fixtureProject;
 

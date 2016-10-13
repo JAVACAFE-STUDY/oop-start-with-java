@@ -44,8 +44,8 @@ public class TaskManagerRestController {
     @PostMapping("/project")
     ResponseEntity<Project> createProject(
             @RequestBody ProjectCreateRequest request) {
-        Project project = projectService.createWithDefaultStatus(request);
 
+        Project project = projectService.createWithDefaultStatus(request);
         return ResponseEntity.ok(project);
     }
 
@@ -53,8 +53,9 @@ public class TaskManagerRestController {
     @GetMapping("/project/{projectId}/status")
     ResponseEntity<List<Status>> getActiveStatuse(
             @PathVariable("projectId") Project project) {
-        return ResponseEntity.ok(
-                statusService.findActiveStatuses(project));
+
+        List<Status> statuses = statusService.findActiveStatuses(project);
+        return ResponseEntity.ok(statuses);
     }
 
     @ApiOperation("상태 추가하기")
@@ -63,8 +64,8 @@ public class TaskManagerRestController {
             @PathVariable("projectId") Project project,
             @RequestBody StatusCreateRequest statusCreateRequest) {
 
-        return ResponseEntity.ok(
-                statusService.create(project, statusCreateRequest));
+        Status status = statusService.create(project, statusCreateRequest);
+        return ResponseEntity.ok(status);
     }
 
     @ApiOperation("작업 추가하기")

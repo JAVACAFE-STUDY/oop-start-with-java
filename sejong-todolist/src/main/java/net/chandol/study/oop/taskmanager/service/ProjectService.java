@@ -19,6 +19,7 @@ public class ProjectService {
         Project project = repository.save(new Project(request.getName()));
         // 기본상태 TO-DO, DOING, DONE Status를 생성한다.
         statusService.createInitialStatus(project);
+
         return project;
     }
 

@@ -19,21 +19,20 @@ public class Task {
     private String name;
     private String description;
     private Boolean archive;
-    @Column(name = "ORDER_NUMBER")
-    private Integer order;
+    private Integer sortValue;
 
     protected Task() {}
 
-    public Task(Status status, String name, String description, Integer order) {
+    public Task(Status status, String name, String description, Integer sortValue) {
         this.name = name;
         this.description = description;
         this.archive = false;
         this.setStatus(status);
-        this.setOrder(order);
+        this.setSortValue(sortValue);
     }
 
-    public void setOrder(int order) {
-        this.order = order;
+    public void setSortValue(int sortValue) {
+        this.sortValue = sortValue;
     }
 
     private void setStatus(Status status){
