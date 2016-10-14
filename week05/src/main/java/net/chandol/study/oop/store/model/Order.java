@@ -1,7 +1,7 @@
-package net.chandol.study.oop.store;
+package net.chandol.study.oop.store.model;
 
 import lombok.Getter;
-import net.chandol.study.oop.store.type.OrderStatus;
+import net.chandol.study.oop.store.model.type.OrderStatus;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

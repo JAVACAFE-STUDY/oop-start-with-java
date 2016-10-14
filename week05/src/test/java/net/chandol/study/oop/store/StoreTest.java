@@ -1,7 +1,15 @@
 package net.chandol.study.oop.store;
 
 
-import net.chandol.study.oop.store.type.OrderStatus;
+import net.chandol.study.oop.store.model.Item;
+import net.chandol.study.oop.store.model.Member;
+import net.chandol.study.oop.store.model.Order;
+import net.chandol.study.oop.store.model.OrderItem;
+import net.chandol.study.oop.store.model.type.OrderStatus;
+import net.chandol.study.oop.store.repository.ItemRepository;
+import net.chandol.study.oop.store.repository.MemberRepository;
+import net.chandol.study.oop.store.repository.OrderItemRepository;
+import net.chandol.study.oop.store.repository.OrderRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

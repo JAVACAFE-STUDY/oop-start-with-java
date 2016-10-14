@@ -1,4 +1,4 @@
-package net.chandol.study.oop.store;
+package net.chandol.study.oop.store.model;
 
 import lombok.Getter;
 
