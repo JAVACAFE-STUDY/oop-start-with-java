@@ -2,18 +2,21 @@ package net.chandol.study.oop.store;
 
 import lombok.Getter;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 @Getter
+@Entity
 public class Member {
+    @Id
+    @GeneratedValue
     private Long id;
     private String name;
-    private String city;
-    private String street;
-    private String zipcode;
+    private String email;
 
-    public Member(String name, String city, String street, String zipcode) {
+    public Member(String name, String email) {
         this.name = name;
-        this.city = city;
-        this.street = street;
-        this.zipcode = zipcode;
+        this.email = email;
     }
 }

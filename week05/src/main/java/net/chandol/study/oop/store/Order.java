@@ -12,9 +12,9 @@ public class Order {
     private Date orderDate; //주문 날짜
     private OrderStatus status;//주문상태
 
-    public Order(Long memberId, Date orderDate, OrderStatus status) {
+    public Order(Long memberId, Date orderDate) {
         this.memberId = memberId;
         this.orderDate = orderDate;
-        this.status = status;
+        this.status = OrderStatus.ORDER;
     }
 }

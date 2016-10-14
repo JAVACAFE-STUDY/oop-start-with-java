@@ -7,11 +7,9 @@ public class Item {
     private Long id;
     private String name; //이름
     private int price; //가격
-    private int stockQuantity; //재고수량
 
-    public Item(String name, int price, int stockQuantity) {
+    public Item(String name, int price) {
         this.name = name;
         this.price = price;
-        this.stockQuantity = stockQuantity;
     }
 }
