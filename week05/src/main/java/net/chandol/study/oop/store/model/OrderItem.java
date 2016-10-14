@@ -5,6 +5,7 @@ import lombok.Getter;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Getter
 @Entity
@@ -12,17 +13,19 @@ public class OrderItem {
     @Id
     @GeneratedValue
     private Long id;
-    private Long itemId;
-    private Long orderId;
+    @ManyToOne
+    private Item item;
+    @ManyToOne
+    private Order order;
     private int orderPrice; //  가격
     private int count; //수량
 
     public OrderItem() {
     }
 
-    public OrderItem(Long itemId, Long orderId, int orderPrice, int count) {
-        this.itemId = itemId;
-        this.orderId = orderId;
+    public OrderItem(Item item, Order order, int orderPrice, int count) {
+        this.item = item;
+        this.order = order;
         this.orderPrice = orderPrice;
         this.count = count;
     }
@@ -31,8 +34,8 @@ public class OrderItem {
     public String toString() {
         return "OrderItem{" +
                 "id=" + id +
-                ", itemId=" + itemId +
-                ", orderId=" + orderId +
+                ", item=" + item +
+                ", order=" + order +
                 ", orderPrice=" + orderPrice +
                 ", count=" + count +
                 '}';

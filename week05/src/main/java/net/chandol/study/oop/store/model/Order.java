@@ -3,10 +3,7 @@ package net.chandol.study.oop.store.model;
 import lombok.Getter;
 import net.chandol.study.oop.store.model.type.OrderStatus;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Getter
@@ -16,15 +13,16 @@ public class Order {
     @Id
     @GeneratedValue
     private Long id;
-    private Long memberId;
+    @ManyToOne
+    private Member member;
     private Date orderDate; //주문 날짜
     private OrderStatus status;//주문상태
 
     public Order() {
     }
 
-    public Order(Long memberId, Date orderDate, OrderStatus orderStatus) {
-        this.memberId = memberId;
+    public Order(Member member, Date orderDate, OrderStatus orderStatus) {
+        this.member = member;
         this.orderDate = orderDate;
         this.status = orderStatus;
     }
@@ -33,7 +31,7 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", memberId=" + memberId +
+                ", member=" + member +
                 ", orderDate=" + orderDate +
                 ", status=" + status +
                 '}';
