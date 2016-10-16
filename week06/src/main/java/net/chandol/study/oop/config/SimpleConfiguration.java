@@ -11,9 +11,13 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
 
 import javax.sql.DataSource;
 
+import static com.google.common.base.Predicates.not;
 import static org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType.H2;
 
 @Configuration
@@ -29,7 +33,7 @@ public class SimpleConfiguration {
     }
 
     @Bean
-    public ModelMapper modelMapper(){
+    public ModelMapper modelMapper() {
         return new ModelMapper();
     }
 
@@ -41,4 +45,14 @@ public class SimpleConfiguration {
                 .modules(new JavaTimeModule())
                 .build();
     }
+
+
+    @Bean
+    public Docket docket() {
+        return new Docket(DocumentationType.SWAGGER_2).select()
+                //Error controller 제거
+                .paths(not(PathSelectors.regex("/error")))
+                .build();
+    }
+
 }
