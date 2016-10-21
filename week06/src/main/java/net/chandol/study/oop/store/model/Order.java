@@ -22,9 +22,14 @@ public class Order {
     }
 
     public Order(Member member, Date orderDate, OrderStatus orderStatus) {
-        this.member = member;
         this.orderDate = orderDate;
         this.status = orderStatus;
+        setMember(member);
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+        member.addOrder(this);
     }
 
     @Override
