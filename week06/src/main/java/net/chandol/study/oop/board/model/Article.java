@@ -13,4 +13,12 @@ public class Article {
     private String body;
     private Date created;
     private Date updated;
+
+    public Article(Board board, User user, String title, String body) {
+        this.board = board;
+        this.user = user;
+        this.title = title;
+        this.body = body;
+        this.created = new Date();
+    }
 }
