@@ -2,6 +2,8 @@
 
 자바카페 2016 하반기스터디 공유자료
 
-== 참고자료
+== 참고자료 및 도서
 
-* http://aeternum.egloos.com/category/Domain-Driven%20Design
+* 이터니티님 DDD 강좌 : http://aeternum.egloos.com/category/Domain-Driven%20Design
+* DDD Start! : http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=84000742
+* 자바 ORM 표준 JPA 프로그래밍 : http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=62681446
