@@ -1,4 +1,4 @@
-package net.chandol.study.oop.calculator;
+package net.chandol.study.oop.tdd;
 
 public class Calculator {
 

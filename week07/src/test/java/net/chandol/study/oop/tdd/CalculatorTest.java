@@ -1,8 +1,9 @@
-package net.chandol.study.oop.calculator;
+package net.chandol.study.oop.tdd;
 
-import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
 import org.junit.Test;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 public class CalculatorTest {
 
@@ -10,13 +11,14 @@ public class CalculatorTest {
     public void add() {
         //given
         Calculator calculator = new Calculator();
-        int a = 0; int b = 3;
+        int a = 0;
+        int b = 3;
 
         //when
         int result = calculator.add(a, b);
 
         //then
-        Assert.assertThat(result, CoreMatchers.is(3));
+        assertThat(result, is(3));
     }
 
 }
