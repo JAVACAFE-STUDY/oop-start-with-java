@@ -6,4 +6,12 @@ import lombok.Data;
 public class CustomerRequest {
     private String email;
     private String password;
+
+    protected CustomerRequest() {
+    }
+
+    public CustomerRequest(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 }

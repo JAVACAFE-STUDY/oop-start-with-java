@@ -27,7 +27,7 @@ public class CustomerServiceWithMockTest {
     public void 회원가입테스트() {
         // given
         CustomerRequest request = new CustomerRequest("sejong@chandol.net", "p@ssw0rd");
-        Mockito.when(emailService.sendEmail(anyString(), anyString(), anyString())).thenReturn("가짜결과반환");
+        Mockito.when(emailService.sendEmail(anyString(), anyString(), anyString())).thenReturn("가짜 결과반환");
 
         // when
         customerService.signUp(request);
