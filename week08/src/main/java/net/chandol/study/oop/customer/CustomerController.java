@@ -13,13 +13,13 @@ public class CustomerController {
     ResponseEntity<Customer> signup(
             @RequestBody CustomerRequest request) {
 
-        Customer customer = customerService.sigup(request);
+        Customer customer = customerService.signUp(request);
         return ResponseEntity.ok(customer);
     }
 
     @GetMapping("/customer/{customerId}")
     ResponseEntity<Customer> getCustomer(
-            @PathVariable Customer customer) {
+            @PathVariable("customerId") Customer customer) {
 
         return ResponseEntity.ok(customer);
     }
