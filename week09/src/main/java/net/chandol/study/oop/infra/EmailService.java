@@ -13,7 +13,6 @@ public class EmailService {
         System.out.println("title    : " + title);
         System.out.println("contents : " + contents);
 
-
         try {
             for (int idx = 0; idx < 3; idx++) {
                 TimeUnit.SECONDS.sleep(1);
@@ -21,11 +20,7 @@ public class EmailService {
             }
         } catch (InterruptedException ignored) {
         }
-<<<<<<< HEAD:oop-week08/src/main/java/net/chandol/study/oop/infra/EmailService.java
 
         return "메일전송 성공";
-=======
-        return "이메일 발송 성공";
->>>>>>> feature/week08_fianl:week08/src/main/java/net/chandol/study/oop/infra/EmailService.java
     }
 }
