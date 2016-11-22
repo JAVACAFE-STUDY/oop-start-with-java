@@ -2,7 +2,7 @@ package net.chandol.study.oop.article;
 
 import net.chandol.study.oop.article.dto.ArticleCreateRequest;
 import net.chandol.study.oop.article.dto.ArticlePageResponse;
-import net.chandol.study.oop.article.dto.ArticleUpdateRequest;
+import net.chandol.study.oop.article.dto.ArticleModifyRequest;
 import net.chandol.study.oop.article.model.Article;
 import net.chandol.study.oop.article.service.ArticleService;
 import org.modelmapper.ModelMapper;
@@ -49,7 +49,7 @@ public class ArticleController {
     @PutMapping("/articles/{articleId}")
     public ResponseEntity<Article> modifyArticle(
             @PathVariable("articleId") Article article,
-            ArticleUpdateRequest request) {
+            ArticleModifyRequest request) {
 
         Article modifiedArticle = articleService.modifyArticle(article, request);
         return ResponseEntity.ok(modifiedArticle);

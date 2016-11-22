@@ -7,9 +7,8 @@ import java.util.List;
 
 @Getter
 @Setter
-public class ArticleCreateRequest extends ArticleRequest {
-
-    public ArticleCreateRequest(String title, String body, String author, String password, List<String> tags) {
+public class ArticleModifyRequest extends ArticleRequest {
+    public ArticleModifyRequest(String title, String body, String author, String password, List<String> tags) {
         super(title, body, author, password, tags);
     }
 }
