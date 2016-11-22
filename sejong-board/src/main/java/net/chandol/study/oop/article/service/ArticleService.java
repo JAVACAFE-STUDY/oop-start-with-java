@@ -1,10 +1,9 @@
-package net.chandol.study.oop.board.service;
+package net.chandol.study.oop.article.service;
 
-import net.chandol.study.oop.board.dto.ArticleRequest.ArticleCreateRequest;
-import net.chandol.study.oop.board.dto.ArticleRequest.ArticleUpdateRequest;
-import net.chandol.study.oop.board.model.Article;
-import net.chandol.study.oop.board.model.ArticleRepository;
-import net.chandol.study.oop.board.model.Board;
+import net.chandol.study.oop.article.dto.ArticleCreateRequest;
+import net.chandol.study.oop.article.dto.ArticleUpdateRequest;
+import net.chandol.study.oop.article.model.Article;
+import net.chandol.study.oop.article.model.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,8 +14,8 @@ public class ArticleService {
     @Autowired
     ArticleRepository articleRepository;
 
-    public Article createArticle(Board board, ArticleCreateRequest request){
-        Article article = new Article(board, request.getTitle(), request.getAuthor(), request.getBody());
+    public Article createArticle(ArticleCreateRequest request){
+        Article article = new Article(request.getTitle(), request.getAuthor(), request.getBody());
 
         return articleRepository.save(article);
     }
@@ -27,8 +26,7 @@ public class ArticleService {
         return articleRepository.save(article);
     }
 
-    public Page<Article> getArticlePage(Board board, Pageable page){
+    public Page<Article> getArticlePage(Pageable page){
         return articleRepository.findAll(page);
     }
-
 }

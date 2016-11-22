@@ -1,8 +1,9 @@
-package net.chandol.study.oop.board.model;
+package net.chandol.study.oop.article.model;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface BoardRepository extends JpaRepository<Board, Long>{
+public interface ArticleRepository extends JpaRepository<Article, Long>{
+
 }

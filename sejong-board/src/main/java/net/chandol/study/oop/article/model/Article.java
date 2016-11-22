@@ -1,11 +1,10 @@
-package net.chandol.study.oop.board.model;
+package net.chandol.study.oop.article.model;
 
 import lombok.Getter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import java.time.OffsetDateTime;
 
 @Entity
@@ -14,20 +13,16 @@ public class Article {
     @Id
     @GeneratedValue
     private Long id;
-    @ManyToOne(optional = false)
-    private Board board;
     private String title;
     private String author;
     private String body;
-
     private OffsetDateTime created;
     private OffsetDateTime updated;
 
     public Article() {
     }
 
-    public Article(Board board, String title, String author, String body) {
-        this.board = board;
+    public Article(String title, String author, String body) {
         this.title = title;
         this.author = author;
         this.body = body;
@@ -39,9 +34,4 @@ public class Article {
         this.body = body;
         this.updated = OffsetDateTime.now();
     }
-
-    public void changeBoard(Board board){
-        this.board = board;
-    }
-
 }
