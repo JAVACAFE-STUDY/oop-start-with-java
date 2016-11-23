@@ -14,7 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class ArticleController {
+@RequestMapping("/api")
+public class ArticleRestController {
     @Autowired
     ArticleService articleService;
     @Autowired
@@ -51,7 +52,7 @@ public class ArticleController {
         return ResponseEntity.ok(articlePageResponses);
     }
 
-    // 게시물 하나 조회
+    // 게시물 단건 조회
     @GetMapping("/articles/{articleId}")
     public ResponseEntity<Article> getArticle(
             @PathVariable("articleId") Article article) {
