@@ -1,6 +1,5 @@
 package net.chandol.study.oop.config;
 
-import net.chandol.logjdbc.LogJdbcDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ResourceLoader;
@@ -20,7 +19,8 @@ public class DataSourceConfiguration {
                 .setType(H2)
                 .build();
 
-        return new LogJdbcDataSource(database);
+        //return new LogJdbcDataSource(database);
+        return database;
     }
 
 }

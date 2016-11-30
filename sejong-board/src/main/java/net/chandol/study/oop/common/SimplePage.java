@@ -27,7 +27,7 @@ public class SimplePage<T> extends PageImpl<T> {
         super(new ArrayList<>());
     }
 
-    public SimplePage(Page rawPage) {
+    public SimplePage(Page<T> rawPage) {
         super(new ArrayList<>());
         this.number = rawPage.getNumber();
         this.size = rawPage.getSize();
@@ -38,6 +38,7 @@ public class SimplePage<T> extends PageImpl<T> {
         this.first = rawPage.isFirst();
         this.nextPage = rawPage.hasNext();
         this.last = rawPage.isLast();
+        this.content = rawPage.getContent();
     }
 
     public int getNumber() {
