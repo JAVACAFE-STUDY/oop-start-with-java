@@ -19,7 +19,7 @@ public class SampleDataGenerator {
     public void generateSampleData() {
         List<String> tags = newArrayList("java", "spring", "jpa");
         for (int idx = 0; idx < 100; idx++) {
-            articleService.createArticle(new ArticleCreateRequest("title" + idx, "body" + idx, "author" + idx, "pw" + idx, tags));
+            articleService.createArticle(new ArticleCreateRequest("title" + idx, "contents" + idx, "author" + idx, "pw" + idx, tags));
         }
     }
 }

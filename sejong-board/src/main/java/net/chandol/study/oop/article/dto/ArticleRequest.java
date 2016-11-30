@@ -10,7 +10,7 @@ import java.util.List;
 @Setter
 public abstract class ArticleRequest {
     private String title;
-    private String body;
+    private String contents;
     private String author;
     private String password;
     private List<String> tags;
@@ -18,12 +18,23 @@ public abstract class ArticleRequest {
     protected ArticleRequest() {
     }
 
-    public ArticleRequest(String title, String body, String author, String password, List<String> tags) {
+    public ArticleRequest(String title, String contents, String author, String password, List<String> tags) {
         this.title = title;
-        this.body = body;
+        this.contents = contents;
         this.author = author;
         this.password = password;
         this.tags = tags;
+    }
+
+    @Override
+    public String toString() {
+        return "ArticleRequest{" +
+                "title='" + title + '\'' +
+                ", contents='" + contents + '\'' +
+                ", author='" + author + '\'' +
+                ", password='" + password + '\'' +
+                ", tags=" + tags +
+                '}';
     }
 }
 

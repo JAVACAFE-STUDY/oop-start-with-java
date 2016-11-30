@@ -20,13 +20,13 @@ public class ArticleService {
 
     @Transactional
     public Article createArticle(ArticleCreateRequest request){
-        Article article = new Article(request.getTitle(), request.getAuthor(), request.getPassword(), request.getBody(), create(request.getTags()));
+        Article article = new Article(request.getTitle(), request.getAuthor(), request.getPassword(), request.getContents(), create(request.getTags()));
         return articleRepository.save(article);
     }
 
     @Transactional
     public Article modifyArticle(Article article, ArticleModifyRequest request){
-        article.modify(request.getTitle(), request.getAuthor(), request.getPassword(), request.getBody(), create(request.getTags()));
+        article.modify(request.getTitle(), request.getAuthor(), request.getPassword(), request.getContents(), create(request.getTags()));
         return articleRepository.save(article);
     }
 

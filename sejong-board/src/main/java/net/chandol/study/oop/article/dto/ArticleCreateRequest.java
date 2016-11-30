@@ -9,7 +9,10 @@ import java.util.List;
 @Setter
 public class ArticleCreateRequest extends ArticleRequest {
 
-    public ArticleCreateRequest(String title, String body, String author, String password, List<String> tags) {
-        super(title, body, author, password, tags);
+    public ArticleCreateRequest() {
+    }
+
+    public ArticleCreateRequest(String title, String contents, String author, String password, List<String> tags) {
+        super(title, contents, author, password, tags);
     }
 }

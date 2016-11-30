@@ -22,9 +22,15 @@
     <script src="//oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <style>
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 970px;
+            }
+        }
+    </style>
     <@pageStyle/>
-<body>
+<contents>
 
 <div class="container">
     <@pageContents/>
@@ -33,7 +39,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-jsonview/1.2.3/jquery.jsonview.min.js"></script>
-<@pageScript/>
-</body>
+    <@pageScript/>
+</contents>
 </html>
 </#macro>
