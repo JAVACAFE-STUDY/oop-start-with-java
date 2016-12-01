@@ -1,12 +1,12 @@
 <#include "/_layout/base.ftl">
 
 <#macro pageContents>
-<header class="header-wrapper row">
+<div class="header-wrapper row">
     <div class="col-sm-offset-2 col-sm-10">
         <h1>게시판 상세</h1>
         <hr>
     </div>
-</header>
+</div>
 
 <div class="article-wrapper row">
     <div class="article-info-wrapper">

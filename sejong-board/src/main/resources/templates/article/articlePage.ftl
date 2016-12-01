@@ -37,12 +37,25 @@
     <div class="row">
         <nav aria-label="page-nav">
             <ul class="pager">
-                <li class="previous">
-                    <a href="/articles?page=${articlePage.number - 1}"><span aria-hidden="true">&larr;</span> Older</a>
-                </li>
-                <li class="next">
-                    <a href="/articles?page=${articlePage.number + 1}">Newer <span aria-hidden="true">&rarr;</span></a>
-                </li>
+                <#if articlePage.number gt 0>
+                    <li class="previous">
+                        <a href="/articles?page=${articlePage.number - 1}"><span aria-hidden="true">&larr;</span> Older</a>
+                    </li>
+                <#else>
+                    <li class="previous disabled">
+                        <a href="#"><span aria-hidden="true">&larr;</span> Older</a>
+                    </li>
+                </#if>
+
+                <#if articlePage.number lt (articlePage.totalPages - 1)>
+                    <li class="next">
+                        <a href="/articles?page=${articlePage.number + 1}">Newer <span aria-hidden="true">&rarr;</span></a>
+                    </li>
+                <#else>
+                    <li class="next disabled">
+                        <a href="#">Newer <span aria-hidden="true">&rarr;</span></a>
+                    </li>
+                </#if>
             </ul>
         </nav>
     </div>
