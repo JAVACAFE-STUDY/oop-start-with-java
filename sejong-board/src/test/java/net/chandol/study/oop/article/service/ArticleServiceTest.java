@@ -31,13 +31,13 @@ public class ArticleServiceTest {
 
         //then
         assertThat(article1.getTitle()).isEqualTo("타이틀1");
-        assertThat(article1.getContent()).isEqualTo("본문1");
+        assertThat(article1.getContents()).isEqualTo("본문1");
         assertThat(article1.getAuthor()).isEqualTo("박세종");
         assertThat(article1.getPassword()).isEqualTo("pw1");
         assertThat(article1.getTags()).contains(new Tag("aa"));
 
         assertThat(article2.getTitle()).isEqualTo("타이틀2");
-        assertThat(article2.getContent()).isEqualTo("본문2");
+        assertThat(article2.getContents()).isEqualTo("본문2");
         assertThat(article2.getAuthor()).isEqualTo("박세종");
         assertThat(article2.getPassword()).isEqualTo("pw2");
         assertThat(article2.getTags()).contains(new Tag("cc"));
@@ -54,7 +54,7 @@ public class ArticleServiceTest {
 
         //then
         assertThat(modifiedArticle.getTitle()).isEqualTo("title1");
-        assertThat(modifiedArticle.getContent()).isEqualTo("body1");
+        assertThat(modifiedArticle.getContents()).isEqualTo("body1");
         assertThat(modifiedArticle.getAuthor()).isEqualTo("박세종");
     }
 

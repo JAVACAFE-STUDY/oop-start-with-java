@@ -8,8 +8,6 @@ import net.chandol.study.oop.article.service.ArticleService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,8 +43,7 @@ public class ArticleRestController {
     public ResponseEntity<Page<ArticlePageResponse>> pageableArticles(
             @RequestParam(defaultValue = "0") int page) {
 
-        Pageable pageable = new PageRequest(page, 10);
-        Page<Article> articlePage = articleService.getArticlePage(pageable);
+        Page<Article> articlePage = articleService.getArticlePage(page);
         Page<ArticlePageResponse> articlePageResponses
                 = articlePage.map(article -> modelMapper.map(article, ArticlePageResponse.class));
         return ResponseEntity.ok(articlePageResponses);

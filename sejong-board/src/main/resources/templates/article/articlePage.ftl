@@ -17,7 +17,7 @@
             </tr>
             </thead>
             <tbody>
-                <#list articlePage.content as article>
+                <#list articlePage.contents as article>
                 <tr class="article-row" data-articleId="${article.id?c}">
                     <td>${article.id?c}</td>
                     <td>${article.title}</td>

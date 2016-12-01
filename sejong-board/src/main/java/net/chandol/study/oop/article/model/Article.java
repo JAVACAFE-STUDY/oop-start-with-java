@@ -18,7 +18,7 @@ public class Article {
     private String password;
 
     @Column(columnDefinition = "TEXT")
-    private String content;
+    private String contents;
 
     @ElementCollection
     @OrderColumn(name = "TAG_SORT_ORDER")
@@ -31,11 +31,11 @@ public class Article {
     protected Article() {
     }
 
-    public Article(String title, String author, String password, String content, List<Tag> tags) {
+    public Article(String title, String author, String password, String contents, List<Tag> tags) {
         this.setTitle(title);
         this.setAuthor(author);
         this.setPassword(password);
-        this.setContent(content);
+        this.setContents(contents);
         this.setTags(tags);
         this.created = OffsetDateTime.now();
     }
@@ -44,7 +44,7 @@ public class Article {
         verifyPasswordIsSame(password);
         this.setTitle(title);
         this.setAuthor(author);
-        this.setContent(body);
+        this.setContents(body);
         this.setTags(tags);
         this.updated = OffsetDateTime.now();
     }
@@ -65,8 +65,8 @@ public class Article {
         this.password = password;
     }
 
-    private void setContent(String content) {
-        this.content = content;
+    private void setContents(String contents) {
+        this.contents = contents;
     }
 
     private void setTags(List<Tag> tags) {

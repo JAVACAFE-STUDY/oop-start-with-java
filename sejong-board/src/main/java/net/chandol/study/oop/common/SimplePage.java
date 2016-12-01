@@ -134,7 +134,7 @@ public class SimplePage<T> extends PageImpl<T> {
                 getSize(), getSort()), getTotalElements());
     }
 
-    public static <P> SimplePage<P> create(Page<P> pageable){
+    public static <P> SimplePage<P> convert(Page<P> pageable){
         return new SimplePage<>(pageable);
     }
 

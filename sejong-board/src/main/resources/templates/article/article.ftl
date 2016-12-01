@@ -2,7 +2,10 @@
 
 <#macro pageContents>
 <header class="header-wrapper row">
-    <h1>게시판 상세</h1>
+    <div class="col-sm-offset-2 col-sm-10">
+        <h1>게시판 상세</h1>
+        <hr>
+    </div>
 </header>
 
 <div class="article-wrapper row">
@@ -19,18 +22,27 @@
             <dt>시간</dt>
             <dd>${article.created}</dd>
         </dl>
+        <dl class="dl-horizontal">
+            <dt>태그</dt>
+            <dd>
+                <#list article.tags as tag>
+                    <span class="label label-default">${tag.name}</span>
+                </#list>
+            </dd>
+        </dl>
     </div>
-    <div class="article-content">
-    ${article.content}
+
+
+    <div class="article-contents col-sm-offset-1 col-sm-11">
+        <div class="panel panel-default">
+            <div class="panel-body">${article.contents}</div>
+        </div>
     </div>
+
 </div>
 </#macro>
 
 <#macro pageScript>
-<script>
-    console.log("Hello, World!");
-</script>
 </#macro>
-
 
 <@pageLayout/>
