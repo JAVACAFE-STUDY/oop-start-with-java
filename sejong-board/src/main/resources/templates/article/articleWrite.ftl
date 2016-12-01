@@ -1,10 +1,10 @@
 <#include "/_layout/base.ftl">
-<#macro pageStyle>
-<link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/css/bootstrap-tokenfield.min.css"
-      rel="stylesheet">
-<link href="//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
 
+<#macro pageStyle>
+<link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/css/bootstrap-tokenfield.min.css" rel="stylesheet">
+<link href="//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
 </#macro>
+
 <#macro pageContents>
 <div class="header-wrapper row">
     <div class="col-sm-offset-2 col-sm-10">
@@ -14,19 +14,23 @@
 </div>
 
 <div class="article-wrapper row">
+
     <form class="form-horizontal" id="articleForm" method="post" action="/articles">
+
         <div class="form-group">
             <label for="author" class="col-sm-2 control-label">지은이</label>
             <div class="col-sm-4">
                 <input type="text" name="author" class="form-control input-sm" id="author">
             </div>
         </div>
+
         <div class="form-group">
             <label for="password" class="col-sm-2 control-label">비밀번호</label>
             <div class="col-sm-4">
                 <input type="password" name="password" class="form-control input-sm" id="password">
             </div>
         </div>
+
         <div class="form-group">
             <label for="title" class="col-sm-2 control-label">제목</label>
             <div class="col-sm-10">
@@ -48,6 +52,7 @@
                 <input type="hidden" id="contents" name="contents" value="">
             </div>
         </div>
+
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <span>
@@ -58,7 +63,9 @@
                 </span>
             </div>
         </div>
+
     </form>
+
 </div>
 </#macro>
 
@@ -86,7 +93,6 @@
 
         this.submit();
     });
-
 </script>
 </#macro>
 

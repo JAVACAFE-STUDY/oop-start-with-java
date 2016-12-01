@@ -16,15 +16,12 @@ public class Article {
     private String title;
     private String author;
     private String password;
-
     @Column(columnDefinition = "TEXT")
     private String contents;
-
     @ElementCollection
     @OrderColumn(name = "TAG_SORT_ORDER")
     @CollectionTable(name = "ARTICLE_TAG")
     private List<Tag> tags;
-
     private OffsetDateTime created;
     private OffsetDateTime updated;
 

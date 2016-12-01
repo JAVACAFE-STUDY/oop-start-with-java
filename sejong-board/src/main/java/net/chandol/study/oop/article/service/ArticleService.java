@@ -3,7 +3,7 @@ package net.chandol.study.oop.article.service;
 import net.chandol.study.oop.article.dto.ArticleCreateRequest;
 import net.chandol.study.oop.article.dto.ArticleModifyRequest;
 import net.chandol.study.oop.article.model.Article;
-import net.chandol.study.oop.article.model.ArticleRepository;
+import net.chandol.study.oop.article.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
