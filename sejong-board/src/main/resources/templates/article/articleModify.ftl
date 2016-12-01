@@ -16,18 +16,21 @@
 
 <div class="article-wrapper row">
     <form class="form-horizontal" id="articleForm" method="post" action="/articles/${article.id}">
+
         <div class="form-group">
             <label for="author" class="col-sm-2 control-label">지은이</label>
             <div class="col-sm-4">
                 <input type="text" name="author" class="form-control input-sm" id="author" value="${article.author}">
             </div>
         </div>
+
         <div class="form-group">
             <label for="password" class="col-sm-2 control-label">비밀번호</label>
             <div class="col-sm-4">
                 <input type="password" name="password" class="form-control input-sm" id="password" value="${article.password}">
             </div>
         </div>
+
         <div class="form-group">
             <label for="title" class="col-sm-2 control-label">제목</label>
             <div class="col-sm-10">
@@ -36,12 +39,15 @@
         </div>
 
         <div class="form-group">
+
             <label for="tags" class="col-sm-2 control-label">태그</label>
             <div class="col-sm-10">
-                <input type="text" name="tags" class="tokenfield form-control input-sm" id="tags" data-role="tagsinput">
-                <#list article.tags as tag>
-                    ${tag.name}
-                </#list>
+                <#assign tagsWithComma>
+                    <#list article.tags as tag>
+                        ${tag.name}<#if tag_has_next>,</#if>
+                    </#list>
+                </#assign>
+                <input type="text" name="tags" class="tokenfield form-control input-sm" id="tags" data-role="tagsinput" value="${tagsWithComma}">
             </div>
         </div>
 
@@ -52,11 +58,20 @@
                 <input type="hidden" id="contents" name="contents" value="">
             </div>
         </div>
+
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">수정</button>
+                <span>
+                    <a href="/articles" class="btn btn-default btn-lg">목록</a>
+                </span>
+                <span class="pull-right">
+                    <button type="submit" class="btn btn-default btn-lg">수정</button>
+                </span>
             </div>
         </div>
+
+        <#-- Spring에서 put을 사용하기 위한 값 -->
+        <input type="hidden" name="_method" value="put">
     </form>
 </div>
 </#macro>

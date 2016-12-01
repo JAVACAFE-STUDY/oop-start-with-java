@@ -49,7 +49,7 @@ public class Article {
         this.updated = OffsetDateTime.now();
     }
 
-    public List<Tag> getTags(){
+    public List<Tag> getTags() {
         return Collections.unmodifiableList(this.tags);
     }
 
@@ -74,9 +74,10 @@ public class Article {
     }
 
     private void verifyPasswordIsSame(String password) {
-        if(password.equals(this.password)){
+        if (!this.password.equals(password)){
             throw new IllegalArgumentException("패스워드가 일치하지 않습니다.");
         }
+
     }
 
 }

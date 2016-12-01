@@ -22,33 +22,36 @@ public class ArticleViewController {
     @GetMapping("/articles")
     public String viewArticlePage(
             @RequestParam(defaultValue = "0") Integer page,
-            Model model) {
+            Model model
+    ) {
 
         SimplePage<Article> articlePage
                 = SimplePage.convert(articleService.getArticlePage(page));
-        model.addAttribute("articlePage", articlePage);
 
+        model.addAttribute("articlePage", articlePage);
         return "/article/articlePage";
     }
 
     @GetMapping("/articles/{articleId}")
     public String viewOneArticle(
             @PathVariable("articleId") Article article,
-            Model model) {
+            Model model
+    ) {
 
         model.addAttribute("article", article);
-
         return "/article/article";
     }
 
     @GetMapping("/articles/write")
     public String viewArticleWriteForm() {
+
         return "/article/articleWrite";
     }
 
     @PostMapping("/articles")
     public String createArticle(
-            ArticleCreateRequest createRequest) {
+            ArticleCreateRequest createRequest
+    ) {
 
         Article article = articleService.createArticle(createRequest);
         return format("redirect:/articles/%d", article.getId());
@@ -57,7 +60,8 @@ public class ArticleViewController {
     @GetMapping("/articles/{articleId}/modify")
     public String viewArticleModify(
             @PathVariable("articleId") Article article,
-            Model model) {
+            Model model
+    ) {
 
         model.addAttribute("article", article);
         return "/article/articleModify";
@@ -66,7 +70,8 @@ public class ArticleViewController {
     @PutMapping("/articles/{articleId}")
     public String modifyArticle(
             @PathVariable("articleId") Article article,
-            ArticleModifyRequest modifyRequest) {
+            ArticleModifyRequest modifyRequest
+    ) {
 
         articleService.modifyArticle(article, modifyRequest);
         return format("redirect:/articles/%d", article.getId());

@@ -17,7 +17,7 @@
             </tr>
             </thead>
             <tbody>
-                <#list articlePage.contents as article>
+                <#list articlePage.content as article>
                 <tr class="article-row" data-articleId="${article.id?c}">
                     <td>${article.id?c}</td>
                     <td>${article.title}</td>
@@ -28,6 +28,11 @@
             </tbody>
         </table>
     </article>
+    <div class="row button">
+        <span class="pull-right">
+            <a href="/articles/write" class="btn btn-default btn-lg">글쓰기</a>
+        </span>
+    </div>
 
     <div class="row">
         <nav aria-label="page-nav">

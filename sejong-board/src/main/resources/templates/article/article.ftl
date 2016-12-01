@@ -39,6 +39,17 @@
         </div>
     </div>
 
+    <div class="row button-wrapper">
+        <div class="col-sm-offset-1 col-sm-11">
+            <span>
+                <a href="/articles" class="btn btn-default btn-lg">목록</a>
+            </span>
+            <span class="pull-right">
+                <a href="/articles/${article.id}/modify" class="btn btn-default btn-lg">수정</a>
+            </span>
+        </div>
+    </div>
+
 </div>
 </#macro>
 

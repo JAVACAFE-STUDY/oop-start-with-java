@@ -50,7 +50,12 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">글쓰기</button>
+                <span>
+                    <a href="/articles" class="btn btn-default btn-lg">목록</a>
+                </span>
+                <span class="pull-right">
+                    <button type="submit" class="btn btn-default btn-lg">저장</button>
+                </span>
             </div>
         </div>
     </form>
