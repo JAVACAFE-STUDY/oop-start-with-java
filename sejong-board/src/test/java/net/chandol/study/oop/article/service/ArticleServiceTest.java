@@ -4,10 +4,12 @@ import net.chandol.study.oop.article.dto.ArticleCreateRequest;
 import net.chandol.study.oop.article.dto.ArticleModifyRequest;
 import net.chandol.study.oop.article.model.Article;
 import net.chandol.study.oop.article.model.Tag;
+import net.chandol.study.oop.article.repository.ArticleRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static com.google.common.collect.Lists.newArrayList;
@@ -15,10 +17,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@ActiveProfiles("unit-test")
 public class ArticleServiceTest {
 
     @Autowired
     ArticleService articleService;
+    @Autowired
+    ArticleRepository articleRepository;
 
     @Test
     public void 게시물_만들기() throws Exception {
@@ -57,6 +62,20 @@ public class ArticleServiceTest {
         assertThat(modifiedArticle.getTitle()).isEqualTo("title1");
         assertThat(modifiedArticle.getContents()).isEqualTo("body1");
         assertThat(modifiedArticle.getAuthor()).isEqualTo("박세종");
+    }
+
+    @Test
+    public void 게시물_삭제하기() throws Exception {
+        //given
+        Article article1 = articleService.createArticle(new ArticleCreateRequest("타이틀1", "본문1", "박세종", "pw1", newArrayList("aa", "bb")));
+        Article article2 = articleService.createArticle(new ArticleCreateRequest("타이틀1", "본문1", "박세종", "pw1", newArrayList("aa", "bb")));
+
+        //when
+        articleService.deleteArticle(article1);
+
+        //then
+        articleRepository.findOne(article1.getId());
+        articleRepository.findOne(article2.getId());
     }
 
 }

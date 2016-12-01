@@ -1,18 +1,26 @@
 package net.chandol.study.oop.article.model;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;
 
+import static org.hibernate.annotations.ResultCheckStyle.COUNT;
+
 @Getter
 @Entity
+@SQLDelete(sql = "UPDATE Article SET deleted = true WHERE id = ?", check = COUNT)
+@Where(clause = "deleted = false")
+@Table(indexes = @Index(columnList = "deleted"))
 public class Comment {
     @Id
     @GeneratedValue
     private Long id;
-    @ManyToOne
-    @JoinColumn(name="ARTICLE_ID")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ARTICLE_ID")
     private Article article;
     private String author;
     @Column(columnDefinition = "TEXT")
@@ -20,6 +28,8 @@ public class Comment {
     private String password;
     private OffsetDateTime created;
     private OffsetDateTime updated;
+    @Getter(AccessLevel.NONE)
+    private Boolean deleted = false;
 
     protected Comment() {
     }

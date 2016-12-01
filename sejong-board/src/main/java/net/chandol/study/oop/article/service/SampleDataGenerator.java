@@ -2,6 +2,7 @@ package net.chandol.study.oop.article.service;
 
 import net.chandol.study.oop.article.dto.ArticleCreateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -10,6 +11,7 @@ import java.util.List;
 import static com.google.common.collect.Lists.newArrayList;
 
 @Component
+@Profile("!unit-test")
 public class SampleDataGenerator {
     @Autowired
     ArticleService articleService;

@@ -33,6 +33,11 @@ public class ArticleService {
         return articleRepository.save(article);
     }
 
+    @Transactional
+    public void deleteArticle(Article article){
+        articleRepository.delete(article);
+    }
+
     public Page<Article> getArticlePage(Integer page){
         Pageable pageable = new PageRequest(page, 10, new Sort(DESC, "id"));
         return articleRepository.findAll(pageable);

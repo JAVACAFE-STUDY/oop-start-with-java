@@ -1,14 +1,22 @@
 package net.chandol.study.oop.article.model;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;
 import java.util.Collections;
 import java.util.List;
 
+import static org.hibernate.annotations.ResultCheckStyle.COUNT;
+
 @Entity
 @Getter
+@SQLDelete(sql = "UPDATE Article SET deleted = true WHERE id = ?", check = COUNT)
+@Where(clause = "deleted = false")
+@Table(indexes = @Index(columnList = "deleted"))
 public class Article {
     @Id
     @GeneratedValue
@@ -18,12 +26,16 @@ public class Article {
     private String password;
     @Column(columnDefinition = "TEXT")
     private String contents;
+
+
     @ElementCollection
     @OrderColumn(name = "TAG_SORT_ORDER")
     @CollectionTable(name = "ARTICLE_TAG")
     private List<Tag> tags;
     private OffsetDateTime created;
     private OffsetDateTime updated;
+    @Getter(AccessLevel.NONE)
+    private Boolean deleted = false;
 
     protected Article() {
     }
@@ -71,7 +83,7 @@ public class Article {
     }
 
     private void verifyPasswordIsSame(String password) {
-        if (!this.password.equals(password)){
+        if (!this.password.equals(password)) {
             throw new IllegalArgumentException("패스워드가 일치하지 않습니다.");
         }
 
