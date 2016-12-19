@@ -70,4 +70,12 @@ public class ArticleViewController {
         articleService.modifyArticle(article, modifyRequest);
         return format("redirect:/articles/%d", article.getId());
     }
+
+    @DeleteMapping("/articles/{articleId}")
+    public String deleteArticle(
+            @PathVariable("articleId") Article article){
+        articleService.deleteArticle(article);
+
+        return "redirect:/articles";
+    }
 }

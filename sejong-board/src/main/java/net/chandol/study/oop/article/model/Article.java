@@ -1,22 +1,14 @@
 package net.chandol.study.oop.article.model;
 
-import lombok.AccessLevel;
 import lombok.Getter;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;
 import java.util.Collections;
 import java.util.List;
 
-import static org.hibernate.annotations.ResultCheckStyle.COUNT;
-
 @Entity
 @Getter
-@SQLDelete(sql = "UPDATE Article SET deleted = true WHERE id = ?", check = COUNT)
-@Where(clause = "deleted = false")
-@Table(indexes = @Index(columnList = "deleted"))
 public class Article {
     @Id
     @GeneratedValue
@@ -27,15 +19,12 @@ public class Article {
     @Column(columnDefinition = "TEXT")
     private String contents;
 
-
     @ElementCollection
-    @OrderColumn(name = "TAG_SORT_ORDER")
     @CollectionTable(name = "ARTICLE_TAG")
+    @OrderColumn
     private List<Tag> tags;
     private OffsetDateTime created;
     private OffsetDateTime updated;
-    @Getter(AccessLevel.NONE)
-    private Boolean deleted = false;
 
     protected Article() {
     }

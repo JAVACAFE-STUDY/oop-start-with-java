@@ -45,15 +45,26 @@
                 <a href="/articles" class="btn btn-default btn-lg">목록</a>
             </span>
             <span class="pull-right">
+                <button id="btnArticleDelete" class="btn btn-default btn-lg">삭제</button>
                 <a href="/articles/${article.id}/modify" class="btn btn-default btn-lg">수정</a>
             </span>
         </div>
     </div>
 
 </div>
+
+
+<form class="hidden" id="articleDeleteForm" method="post" action="/articles/${article.id}">
+    <input type="hidden" name="_method" value="delete">
+</form>
 </#macro>
 
 <#macro pageScript>
+<script>
+    $("#btnArticleDelete").on("click", function(){
+        $("#articleDeleteForm").submit();
+    })
+</script>
 </#macro>
 
 <@pageLayout/>
