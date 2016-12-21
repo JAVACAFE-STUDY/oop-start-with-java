@@ -4,7 +4,6 @@ import lombok.Getter;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -75,50 +74,9 @@ public class Article {
     private void verifyPasswordIsSame(String password) {
         if (!this.password.equals(password))
             throw new IllegalArgumentException("패스워드가 일치하지 않습니다.");
-
     }
 
-    public static Builder builder() {
-        return new Builder();
-    }
-
-    public static final class Builder {
-        private String title;
-        private String author;
-        private String password;
-        private String contents;
-        private List<Tag> tags = new ArrayList<>();
-
-        private Builder() {
-        }
-
-        public Builder withTitle(String title) {
-            this.title = title;
-            return this;
-        }
-
-        public Builder withAuthor(String author) {
-            this.author = author;
-            return this;
-        }
-
-        public Builder withPassword(String password) {
-            this.password = password;
-            return this;
-        }
-
-        public Builder withContents(String contents) {
-            this.contents = contents;
-            return this;
-        }
-
-        public Builder withTags(List<Tag> tags) {
-            this.tags = tags;
-            return this;
-        }
-
-        public Article build() {
-            return new Article(title, author, password, contents, tags);
-        }
+    public static ArticleBuilder builder() {
+        return new ArticleBuilder();
     }
 }

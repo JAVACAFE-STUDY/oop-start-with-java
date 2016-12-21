@@ -24,6 +24,7 @@ public class ArticleService {
     public Article createArticle(ArticleCreateRequest request){
 
         Article article = Article.builder()
+                .withTitle(request.getTitle())
                 .withAuthor(request.getAuthor())
                 .withContents(request.getContents())
                 .withPassword(request.getPassword())
