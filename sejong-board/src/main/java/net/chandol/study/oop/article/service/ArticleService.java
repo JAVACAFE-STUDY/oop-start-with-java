@@ -11,7 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import static net.chandol.study.oop.article.model.Tag.create;
+import static net.chandol.study.oop.article.model.Tag.toTagList;
 import static org.springframework.data.domain.Sort.Direction.DESC;
 
 @Service
@@ -22,13 +22,24 @@ public class ArticleService {
 
     @Transactional
     public Article createArticle(ArticleCreateRequest request){
-        Article article = new Article(request.getTitle(), request.getAuthor(), request.getPassword(), request.getContents(), create(request.getTags()));
+
+        Article article = Article.builder()
+                .withAuthor(request.getAuthor())
+                .withContents(request.getContents())
+                .withPassword(request.getPassword())
+                .withTags(toTagList(request.getTags()))
+                .build();
+
         return articleRepository.save(article);
     }
 
     @Transactional
     public Article modifyArticle(Article article, ArticleModifyRequest request){
-        article.modify(request.getTitle(), request.getAuthor(), request.getPassword(), request.getContents(), create(request.getTags()));
+
+        article.modify(request.getTitle(),request.getAuthor(),
+                request.getPassword(), request.getContents(),
+                toTagList(request.getTags()));
+
         return articleRepository.save(article);
     }
 

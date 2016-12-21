@@ -13,6 +13,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static net.chandol.testutil.SejongAssert.fieldValueAssertThat;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
@@ -20,10 +21,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ActiveProfiles("unit-test")
 public class ArticleServiceTest {
 
-    @Autowired
-    ArticleService articleService;
-    @Autowired
-    ArticleRepository articleRepository;
+    @Autowired ArticleService    articleService;
+    @Autowired ArticleRepository articleRepository;
 
     @Test
     public void 게시물_만들기() throws Exception {
@@ -36,17 +35,22 @@ public class ArticleServiceTest {
         Article article2 = articleService.createArticle(request2);
 
         //then
-        assertThat(article1.getTitle()).isEqualTo("타이틀1");
-        assertThat(article1.getContents()).isEqualTo("본문1");
-        assertThat(article1.getAuthor()).isEqualTo("박세종");
-        assertThat(article1.getPassword()).isEqualTo("pw1");
-        assertThat(article1.getTags()).contains(new Tag("aa"));
+        fieldValueAssertThat(article1)
+                .is("title", "타이틀1")
+                .is("contents", "본문1")
+                .is("author", "박세종")
+                .is("password", "pw1");
 
-        assertThat(article2.getTitle()).isEqualTo("타이틀2");
-        assertThat(article2.getContents()).isEqualTo("본문2");
-        assertThat(article2.getAuthor()).isEqualTo("박세종");
-        assertThat(article2.getPassword()).isEqualTo("pw2");
-        assertThat(article2.getTags()).contains(new Tag("cc"));
+        assertThat(article1.getTags())
+                .contains(new Tag("aa"));
+
+        fieldValueAssertThat(article2)
+                .is("title", "타이틀2")
+                .is("contents", "본문2")
+                .is("author", "박세종")
+                .is("password", "pw2");
+        assertThat(article2.getTags())
+                .contains(new Tag("cc"), new Tag("dd"));
     }
 
     @Test
@@ -67,8 +71,10 @@ public class ArticleServiceTest {
     @Test
     public void 게시물_삭제하기() throws Exception {
         //given
-        Article article1 = articleService.createArticle(new ArticleCreateRequest("타이틀1", "본문1", "박세종", "pw1", newArrayList("aa", "bb")));
-        Article article2 = articleService.createArticle(new ArticleCreateRequest("타이틀1", "본문1", "박세종", "pw1", newArrayList("aa", "bb")));
+        Article article1 = articleService.createArticle(
+                new ArticleCreateRequest("타이틀1", "본문1", "박세종", "pw1", newArrayList("aa", "bb")));
+        Article article2 = articleService.createArticle(
+                new ArticleCreateRequest("타이틀1", "본문1", "박세종", "pw1", newArrayList("aa", "bb")));
 
         //when
         articleService.deleteArticle(article1);
