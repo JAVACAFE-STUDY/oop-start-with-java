@@ -53,15 +53,15 @@ public class ArticleServiceTest {
     public void 게시물_수정하기() throws Exception {
         //given
         Article article = articleService.createArticle(new ArticleCreateRequest("타이틀1", "본문1", "박세종", "pw1", newArrayList("aa", "bb")));
-        ArticleModifyRequest request = new ArticleModifyRequest("title1", "body1", "contents", "pw1", newArrayList("cc", "dd"));
+        ArticleModifyRequest request = new ArticleModifyRequest("title1", "contents1", "Sejong Park", "pw1", newArrayList("cc", "dd"));
 
         //when
         Article modifiedArticle = articleService.modifyArticle(article, request);
 
         //then
         assertThat(modifiedArticle.getTitle()).isEqualTo("title1");
-        assertThat(modifiedArticle.getContents()).isEqualTo("body1");
-        assertThat(modifiedArticle.getAuthor()).isEqualTo("박세종");
+        assertThat(modifiedArticle.getContents()).isEqualTo("contents1");
+        assertThat(modifiedArticle.getAuthor()).isEqualTo("Sejong Park");
     }
 
     @Test
