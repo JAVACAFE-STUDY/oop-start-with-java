@@ -9,19 +9,25 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.stream.IntStream;
+
 import static com.google.common.collect.Lists.newArrayList;
+import static java.util.Arrays.asList;
 import static net.chandol.testutil.SejongAssert.fieldValueAssertThat;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("unit-test")
 public class ArticleServiceTest {
 
-    @Autowired ArticleService    articleService;
+    @Autowired ArticleService articleService;
     @Autowired ArticleRepository articleRepository;
 
     @Test
@@ -84,4 +90,19 @@ public class ArticleServiceTest {
         articleRepository.findOne(article2.getId());
     }
 
+    @Test
+    public void 게시물페이징_테스트() throws Exception {
+        //given
+        IntStream.range(0, 30).boxed()
+                .map(idx -> new ArticleCreateRequest("타이틀" + idx, "본문" + idx, "박세종", "pw" + idx, asList("a", "b")))
+                .forEach(r -> articleService.createArticle(r));
+
+        //when
+        Page<Article> articlePage0 = articleService.getArticlePage(0);
+        Page<Article> articlePage1 = articleService.getArticlePage(1);
+
+        //then
+        assertThat(articlePage0.getSize(), is(10));
+        assertThat(articlePage1.getSize(), is(10));
+    }
 }
