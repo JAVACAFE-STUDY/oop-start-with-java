@@ -39,7 +39,7 @@
             <ul class="pager">
                 <#if articlePage.number gt 0>
                     <li class="previous">
-                        <a href="/articles?page=${articlePage.number - 1}"><span aria-hidden="true">&larr;</span> Older</a>
+                        <a href="/articles?page=${articlePage.number - 1}"><span aria-hidden="true">&larr;</span> Prev</a>
                     </li>
                 <#else>
                     <li class="previous disabled">
@@ -49,7 +49,7 @@
 
                 <#if articlePage.number lt (articlePage.totalPages - 1)>
                     <li class="next">
-                        <a href="/articles?page=${articlePage.number + 1}">Newer <span aria-hidden="true">&rarr;</span></a>
+                        <a href="/articles?page=${articlePage.number + 1}">Next <span aria-hidden="true">&rarr;</span></a>
                     </li>
                 <#else>
                     <li class="next disabled">
